@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://chi1ldlp06upo"]
+
+[ext_resource type="Texture2D" uid="uid://ccsolpnncf21e" path="res://assets/rocket.png" id="1_d5lh8"]
+[ext_resource type="Texture2D" uid="uid://bgnolit1jrd4r" path="res://assets/jupiter.png" id="1_rxlph"]
+[ext_resource type="Script" uid="uid://dqqt128xnop58" path="res://PhysicsObject.gd" id="2_ulv8f"]
+[ext_resource type="Script" uid="uid://bvg4h5f222xw1" path="res://RocketObject.gd" id="4_w5eul"]
+
+[node name="Space" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="Jupiter" type="Sprite2D" parent="."]
+scale = Vector2(0.020769244, 0.019909713)
+texture = ExtResource("1_rxlph")
+script = ExtResource("2_ulv8f")
+mass = 1.89e+27
+
+[node name="Rocket" type="Sprite2D" parent="."]
+position = Vector2(-45, -1)
+scale = Vector2(0.013671873, 0.013671873)
+texture = ExtResource("1_d5lh8")
+script = ExtResource("4_w5eul")
+mass = 10000.0

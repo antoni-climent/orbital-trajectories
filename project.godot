@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="Orbital_trajectories"
+run/main_scene="uid://chi1ldlp06upo"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+CoordinateConverter="*res://CoordinateConverter.gd"
