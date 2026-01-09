@@ -18,3 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 CoordinateConverter="*res://CoordinateConverter.gd"
+TimeProvider="*res://TimeProvider.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"

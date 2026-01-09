@@ -1,11 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://chi1ldlp06upo"]
+[gd_scene load_steps=11 format=3 uid="uid://chi1ldlp06upo"]
 
 [ext_resource type="Texture2D" uid="uid://ccsolpnncf21e" path="res://assets/rocket.png" id="1_d5lh8"]
 [ext_resource type="Texture2D" uid="uid://bgnolit1jrd4r" path="res://assets/jupiter.png" id="1_rxlph"]
+[ext_resource type="Script" uid="uid://bsosnjgpr4hcc" path="res://SpaceManager.gd" id="1_w5eul"]
 [ext_resource type="Script" uid="uid://dqqt128xnop58" path="res://PhysicsObject.gd" id="2_ulv8f"]
 [ext_resource type="Script" uid="uid://bvg4h5f222xw1" path="res://RocketObject.gd" id="4_w5eul"]
+[ext_resource type="Texture2D" uid="uid://c38xupcam8c3q" path="res://assets/play.png" id="5_ulv8f"]
+[ext_resource type="Texture2D" uid="uid://cka5m20fdfi6t" path="res://assets/space.jpeg" id="6_1vxpe"]
+[ext_resource type="Texture2D" uid="uid://krpn6ejipea4" path="res://assets/stop.png" id="7_4fhbr"]
+[ext_resource type="Texture2D" uid="uid://b2iwdsm00ksf" path="res://assets/fast.png" id="8_1vxpe"]
+[ext_resource type="Texture2D" uid="uid://i1pxmeudps0r" path="res://assets/reset.png" id="10_4hog4"]
 
 [node name="Space" type="Node2D"]
+script = ExtResource("1_w5eul")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = -65.0
+offset_right = 115.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_1vxpe")
+expand_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -14,11 +43,86 @@ zoom = Vector2(5, 5)
 scale = Vector2(0.020769244, 0.019909713)
 texture = ExtResource("1_rxlph")
 script = ExtResource("2_ulv8f")
-mass = 1.89e+27
+mass = 1.9999999999999995e+23
 
 [node name="Rocket" type="Sprite2D" parent="."]
-position = Vector2(-45, -1)
+position = Vector2(13.000001, -5)
 scale = Vector2(0.013671873, 0.013671873)
 texture = ExtResource("1_d5lh8")
 script = ExtResource("4_w5eul")
 mass = 10000.0
+
+[node name="Jupiter2" type="Sprite2D" parent="."]
+position = Vector2(30, 0)
+scale = Vector2(0.020769244, 0.019909713)
+texture = ExtResource("1_rxlph")
+script = ExtResource("2_ulv8f")
+mass = 1.9999999999999995e+23
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 0.5
+offset_left = -115.265
+offset_top = -65.0
+offset_right = 114.735
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_left = 0.9999981
+offset_top = 1.0000057
+offset_right = 403.0
+offset_bottom = 328.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("5_ulv8f")
+texture_pressed = ExtResource("5_ulv8f")
+texture_hover = ExtResource("5_ulv8f")
+texture_disabled = ExtResource("5_ulv8f")
+texture_focused = ExtResource("5_ulv8f")
+stretch_mode = 0
+
+[node name="StopButton" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_left = 21.999998
+offset_top = 0.99999994
+offset_right = 438.0
+offset_bottom = 328.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("7_4fhbr")
+texture_pressed = ExtResource("7_4fhbr")
+texture_hover = ExtResource("7_4fhbr")
+texture_disabled = ExtResource("7_4fhbr")
+texture_focused = ExtResource("7_4fhbr")
+
+[node name="AccelerateButton" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_left = 42.999996
+offset_top = 1.9999999
+offset_right = 516.0
+offset_bottom = 228.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("8_1vxpe")
+texture_pressed = ExtResource("8_1vxpe")
+texture_hover = ExtResource("8_1vxpe")
+texture_disabled = ExtResource("8_1vxpe")
+texture_focused = ExtResource("8_1vxpe")
+
+[node name="ResetButton" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_left = 2.2649999
+offset_top = 18.000004
+offset_right = 1242.265
+offset_bottom = 428.0
+scale = Vector2(0.025, 0.025)
+texture_normal = ExtResource("10_4hog4")
+texture_pressed = ExtResource("10_4hog4")
+texture_hover = ExtResource("10_4hog4")
+texture_disabled = ExtResource("10_4hog4")
+texture_focused = ExtResource("10_4hog4")
+
+[connection signal="pressed" from="Control2/PlayButton" to="." method="changeTimeScale" binds= [1.0]]
+[connection signal="pressed" from="Control2/StopButton" to="." method="changeTimeScale" binds= [0.0]]
+[connection signal="pressed" from="Control2/AccelerateButton" to="." method="multiplyTimeScale"]
+[connection signal="pressed" from="Control2/ResetButton" to="." method="resetScene"]
