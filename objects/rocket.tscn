@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://q512hjoavhjp"]
+
+[ext_resource type="Texture2D" uid="uid://ccsolpnncf21e" path="res://assets/rocket.png" id="1_pb2y6"]
+[ext_resource type="Script" uid="uid://bvg4h5f222xw1" path="res://RocketObject.gd" id="2_tgfi0"]
+
+[node name="Rocket" type="Sprite2D"]
+scale = Vector2(0.013671873, 0.013671873)
+texture = ExtResource("1_pb2y6")
+script = ExtResource("2_tgfi0")
+mass = 10000.0

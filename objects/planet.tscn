@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://me8tldrx3bcy"]
+
+[ext_resource type="Texture2D" uid="uid://bgnolit1jrd4r" path="res://assets/jupiter.png" id="1_elel1"]
+[ext_resource type="Script" uid="uid://dqqt128xnop58" path="res://PhysicsObject.gd" id="2_gcwab"]
+
+[node name="Jupiter" type="Sprite2D"]
+scale = Vector2(0.020769244, 0.019909713)
+texture = ExtResource("1_elel1")
+script = ExtResource("2_gcwab")
+mass = 1.9999999999999995e+23
